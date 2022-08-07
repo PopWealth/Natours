@@ -45,12 +45,16 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     display: inline-block;
-    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
     letter-spacing: .2rem;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
     transition: all .2s;
+    color: $color-primary;
+
+    @supports (background-clip: text) or (-webkit-background-clip: text) {
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
 
     @include respond(tab-port) {
         font-size: 3rem;
